@@ -4,9 +4,7 @@ function App() {
   const [sessionTime, setSessionTime] = React.useState(25 * 60);
   const [timerOn, setTimerOn] = React.useState(false);
   const [onBreak, setOnBreak] = React.useState(false);
-  const [breakAudio, setBreakAudio] = React.useState(
-    new Audio('./breakTime.mp3')
-  );
+  const [breakAudio] = React.useState(new Audio('./breakTime.mp3'));
 
   const playBreakSound = () => {
     breakAudio.currentTime = 0;
@@ -84,7 +82,7 @@ function App() {
 
   return (
     <div className="center-align">
-      <h1>Pomodoro Clock</h1>
+      <h1 className="title">Pomodoro Clock</h1>
       <div className="dual-container">
         <Length
           title={'Set Break'}
@@ -103,14 +101,14 @@ function App() {
       </div>
       <h3>{onBreak ? 'Break' : 'Session'}</h3>
       <h1>{formatTime(displayTime)}</h1>
-      <button className="btn-large deep-purple lighten-2" onClick={controlTime}>
+      <button className="btn-large light-blue darken-1" onClick={controlTime}>
         {timerOn ? (
           <i className="material-icons">pause_circle_filled</i>
         ) : (
           <i className="material-icons">play_circle_filled</i>
         )}
       </button>
-      <button className="btn-large deep-purple lighten-2" onClick={resetTime}>
+      <button className="btn-large light-blue darken-1" onClick={resetTime}>
         <i className="material-icons">autorenew</i>
       </button>
     </div>
@@ -123,14 +121,14 @@ function Length({ title, changeTime, type, time, formatTime }) {
       <h3>{title}</h3>
       <div className="time-sets">
         <button
-          className="btn-small deep-purple lighten-2"
+          className="btn-small light-blue darken-1"
           onClick={() => changeTime(-60, type)}
         >
           <i className="material-icons">arrow_downward</i>
         </button>
         <h3>{formatTime(time)}</h3>
         <button
-          className="btn-small deep-purple lighten-2"
+          className="btn-small light-blue darken-1"
           onClick={() => changeTime(+60, type)}
         >
           <i className="material-icons">arrow_upward</i>
@@ -139,4 +137,4 @@ function Length({ title, changeTime, type, time, formatTime }) {
     </div>
   );
 }
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('app'));
